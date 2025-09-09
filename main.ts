@@ -1,43 +1,15 @@
-input.onButtonPressed(Button.A, function () {
-	
-})
-input.onButtonPressed(Button.AB, function () {
-    radio.sendString("")
-})
-input.onButtonPressed(Button.B, function () {
-    textindex += 1
-})
-let textindex = 0
-let text_list: number[] = []
-let textarray = [
-"A",
-"B",
-"C",
-"D",
-"F",
-"G",
-"H",
-"I",
-"J",
-"K",
-"L",
-"M",
-"N",
-"O",
-"P",
-"Q",
-"R",
-"S",
-"T",
-"U",
-"V",
-"W",
-"X",
-"Y",
-"Z",
-".",
-"()"
-]
-basic.forever(function () {
-    basic.showString("" + (textarray[textindex]))
+radio.setTransmitPower(7)
+loops.everyInterval(1000, function () {
+    radio.sendValue("ping", 1)
+    basic.showLeds(`
+        . . . . .
+        . . # . .
+        . # # # .
+        . . # . .
+        . . . . .
+        `)
+    music.ringTone(262)
+    basic.pause(100)
+    basic.clearScreen()
+    music.rest(music.beat(BeatFraction.Whole))
 })
